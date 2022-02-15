@@ -10,13 +10,13 @@ const List = (props) => (
     <ul>
         {
             props.items.map((item, i) => {
-                return <li key={i}>{item}</li>
+                return <li key={i}>{item.name}</li>
             })
         }
     </ul>
 )
 
-async function ListSatellite() {
+function ListSatellite() {
 
     const [done, setDone] = useState(0);
     const [items, setItems] = useState([]);
@@ -25,7 +25,7 @@ async function ListSatellite() {
     // Make the call to the API
 
     useEffect(() => {
-        fetch('https://api.spacexdata.com/v5/l´aunches/')
+        fetch('https://api.spacexdata.com/v5/launches/')
         .then(result=>result.json())
         .then(itemsResponse=>{setItems(itemsResponse); console.log(itemsResponse); setDone(true); setSucces(true);})
         

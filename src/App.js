@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import ListSatellite from './ListSatellite.js'
+import ListSatellite from './components/ListSatellite.js'
 
 function App() {
   return (

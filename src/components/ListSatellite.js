@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 
-
 // Stateless component that will return the list with the data.
 
 const List = (props) => (
@@ -39,4 +38,3 @@ function ListSatellite(props) {
 
 
 export default ListSatellite;
-      

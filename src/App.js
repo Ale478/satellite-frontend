@@ -1,8 +1,9 @@
+import { useState, useEffect } from 'react';
 import React from 'react';
-import './App.css';
 import ListSatellite from './components/ListSatellite.js'
 import Search from './components/SearchSatellite'
-import { useState, useEffect } from 'react';
+import FilterDate from './components/FilterDate';
+import './App.css';
 
 
 
@@ -34,6 +35,7 @@ function App() {
     <div className="tituloPrincipal">
       <h1>Satellite Coordination System</h1>
       <Search saveList={saveList} setShowingList={setShowingList}/>
+      <FilterDate savelist={saveList} setShowingList={setShowingList}/>
       <ListSatellite showingList={showingList} done={done} success={success}/>
     </div>
   );

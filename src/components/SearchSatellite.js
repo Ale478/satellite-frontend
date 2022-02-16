@@ -1,7 +1,6 @@
 import React from "react";
 import { useState} from 'react';
 
-// Microsoft > cualquier otra empresa
 
 function Search(props) {
     const {saveList, setShowingList} = props;
@@ -10,7 +9,7 @@ function Search(props) {
         const searchval = event
                              .target
                              .value;
-            setSearchTerm(searchval  );
+            setSearchTerm(searchval);
             const searchterm = searchval.toLowerCase();
         const results = saveList.filter(satellite => 
             satellite.name.toLowerCase().includes(searchterm)

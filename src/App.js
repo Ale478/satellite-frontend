@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import ListSatellite from './components/ListSatellite.js'
-import Search from './components/SearchSatellite'
-import FilterDate from './components/FilterDate';
+import Search from './components/SearchSatellite.js'
+import FilterDate from './components/FilterDate.js';
+import Checkbox from './components/Checkbox.js'
 import './App.css';
 
 
@@ -36,6 +37,7 @@ function App() {
       <h1>Satellite Coordination System</h1>
       <Search saveList={saveList} setShowingList={setShowingList}/>
       <FilterDate saveList={saveList} setShowingList={setShowingList}/>
+      <Checkbox saveList={saveList} setShowingList={setShowingList}/>
       <ListSatellite showingList={showingList} done={done} success={success}/>
     </div>
   );

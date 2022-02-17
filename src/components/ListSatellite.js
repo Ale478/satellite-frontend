@@ -17,7 +17,7 @@ function ListSatellite(props) {
  
     const{showingList, done, success} = props;    
     
-    // Prevents the user from seeing a blank screen until the API returns values
+    // Prevents the user from seeingn a blank screen until the API returns values
 
     if(done){
         return( 

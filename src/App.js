@@ -19,25 +19,65 @@ function App() {
   const [success, setSuccess] = useState(0);
   const [done, setDone] = useState(0);
 
+  const [dateToFilter, setDateToFilter] = useState(0);
+  const [filterBySuccess, setFilterBySuccess] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("");
+  
 
     // Make the call to the API
   useEffect(() => {
     fetch('https://api.spacexdata.com/v5/launches/')
-    .then(result=>result.json())
-    .then(itemsResponse=>{setSaveList(itemsResponse); setShowingList(itemsResponse); setDone(true); setSuccess(true);})
-    .catch(() => {
+      .then(result=>result.json())
+      .then(itemsResponse=> {
+        setSaveList(itemsResponse);
+        setShowingList(itemsResponse);
         setDone(true);
-        setSuccess(false);
-    })
-}, []);
+        setSuccess(true);})
+      .catch(() => {
+          setDone(true);
+          setSuccess(false);
+      })
+  }, []);
 
-
+  useEffect(() => {
+      const listToShow = saveList.filter(satellite => {
+         let filter = true;
+          
+         // Filter by date
+         if (dateToFilter) {
+           filter = filter && Date.parse(satellite.date_local) > dateToFilter.getTime();
+         }
+    
+         // Filter by name
+         if (searchTerm) {
+           filter = filter && (
+              satellite.name
+                       .toLowerCase()
+                       .includes(searchTerm.toLowerCase())
+            );
+          }
+     
+          // Filter by check
+          if (filterBySuccess) {
+            filter = filter && satellite.success
+          }
+          return filter;
+        });
+        setShowingList(listToShow);
+      }, [
+        dateToFilter,
+        searchTerm,
+        filterBySuccess,
+        saveList,
+        setShowingList
+      ]);
+      
   return (
     <div className="tituloPrincipal">
       <h1>Satellite Coordination System</h1>
-      <Search saveList={saveList} setShowingList={setShowingList}/>
-      <FilterDate saveList={saveList} setShowingList={setShowingList}/>
-      <Checkbox saveList={saveList} setShowingList={setShowingList}/>
+      <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
+      <FilterDate setDateToFilter={setDateToFilter} dateToFilter={dateToFilter}/>
+      <Checkbox setFilterBySuccess={setFilterBySuccess}/>
       <ListSatellite showingList={showingList} done={done} success={success}/>
     </div>
   );

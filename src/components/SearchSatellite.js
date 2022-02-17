@@ -1,20 +1,14 @@
 import React from "react";
-import { useState} from 'react';
 
 
 function Search(props) {
-    const {saveList, setShowingList} = props;
-    const [searchTerm, setSearchTerm] = useState("");
+    const {searchTerm, setSearchTerm} = props;
+
     const handleChange = event => {
         const searchval = event
                              .target
                              .value;
             setSearchTerm(searchval);
-            const searchterm = searchval.toLowerCase();
-        const results = saveList.filter(satellite => 
-            satellite.name.toLowerCase().includes(searchterm)
-        );
-        setShowingList(results)
     };
     
     return (

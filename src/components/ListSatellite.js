@@ -7,7 +7,7 @@ const List = (props) => (
     <ul>
         {
             props.showingList.map((showingList, i) => {
-                return <li key={i}>{showingList.name}</li>
+                return <li key={i}>{showingList.name} <br/> {(new Date(showingList.date_local)).toDateString()}</li>
             })
         }
     </ul>

@@ -35,7 +35,7 @@ function App() {
     <div className="tituloPrincipal">
       <h1>Satellite Coordination System</h1>
       <Search saveList={saveList} setShowingList={setShowingList}/>
-      <FilterDate savelist={saveList} setShowingList={setShowingList}/>
+      <FilterDate saveList={saveList} setShowingList={setShowingList}/>
       <ListSatellite showingList={showingList} done={done} success={success}/>
     </div>
   );

@@ -1,17 +1,41 @@
 import * as React from 'react';
+//import ErrorIcon from '@mui/icons-material/Error';
+import {
+    TableCell, TableRow, TableBody, Table,
+  } from '@mui/material';
+  
 
 
 // Stateless component that will return the list with the data.
 
-const List = (props) => (
-    <ul>
-        {
-            props.showingList.map((showingList, i) => {
-                return <li key={i}>{showingList.name} <br/> {(new Date(showingList.date_local)).toDateString()}</li>
-            })
-        }
-    </ul>
-)
+function list(rows){
+    const ListSat = rows.map((showingList, i) => {
+        const successStyle = {
+            color: showingList.success ? "green" : "red"
+        };
+
+        return (
+            <TableRow key={i}>
+                <TableCell>
+                    <div>
+                        {showingList.name}
+                        <br></br>
+                        <span style={successStyle}>
+                            {showingList.success? "Succesfull":"Failed"}
+                        </span>
+                    </div>
+                </TableCell>
+                <TableCell>
+                {(new Date(showingList.date_local)).toDateString()}
+                </TableCell>
+            </TableRow>
+        )
+    });
+
+    return ListSat;
+            
+}
+
 
 function ListSatellite(props) {
  
@@ -24,7 +48,14 @@ function ListSatellite(props) {
             <div>
                 {
                     success ? (
-                        <List showingList={showingList} />
+                        <div style={{ maxWidth: '90%', margin: '0 auto' }}>
+                            <Table>
+                                <TableBody>
+                                    {list (showingList)}
+                                </TableBody>
+                            </Table>
+                        </div>
+                        
                     ) : ( <p>Unable to recover server data</p>
                         )
                 }
@@ -38,3 +69,5 @@ function ListSatellite(props) {
 
 
 export default ListSatellite;
+
+

@@ -72,7 +72,7 @@ function App() {
 
   return (
     <Container maxWidth="sm">
-      <h1>Satellites Coordintaion System</h1>
+      <h1>Satellites Coordination System</h1>
 
       <Grid container spacing={2}>
         <Grid item xs={6}>

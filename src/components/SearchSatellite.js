@@ -1,4 +1,5 @@
 import React from "react";
+import TextField from '@mui/material/TextField';
 
 
 function Search(props) {
@@ -12,15 +13,13 @@ function Search(props) {
     };
     
     return (
-        <div className="Search">
-            <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={handleChange}
-            />
-        </div>
+        <TextField
+        label="Search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
     );
 }
 
 export default Search;
+

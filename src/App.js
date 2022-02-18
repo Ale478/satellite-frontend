@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
 import ListSatellite from './components/ListSatellite.js'
 import Search from './components/SearchSatellite.js'
 import FilterDate from './components/FilterDate.js';
-import Checkbox from './components/Checkbox.js'
+import Check from './components/Check.js'
 import './App.css';
 
 
@@ -73,14 +75,26 @@ function App() {
       ]);
       
   return (
-    <div className="tituloPrincipal">
-      <h1>Satellite Coordination System</h1>
-      <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
-      <FilterDate setDateToFilter={setDateToFilter} dateToFilter={dateToFilter}/>
-      <Checkbox setFilterBySuccess={setFilterBySuccess}/>
-      <ListSatellite showingList={showingList} done={done} success={success}/>
-    </div>
+    <Container maxWidth="sm">
+    <h1>Satellites Coordintaion System</h1>
+
+    <Grid container spacing={2}>
+        <Grid item xs={6}>
+            <Search setSearchTerm={setSearchTerm} searchTerm={searchTerm}/>
+        </Grid>
+        <Grid item xs={6}>
+           <FilterDate setDateToFilter={setDateToFilter} dateToFilter={dateToFilter}/>
+        </Grid>
+        <Grid item xs={6}>
+            <Check setFilterBySuccess={setFilterBySuccess}/>
+        </Grid>
+    </Grid>
+
+    <ListSatellite showingList={showingList} done={done} success={success}/>
+
+    </Container>
   );
 }
 
 export default App;
+

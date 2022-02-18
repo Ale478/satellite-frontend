@@ -1,6 +1,8 @@
 import * as React from 'react';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
+import TextField from '@mui/material/TextField';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
 
 
 const FilterDate = (props) => {
@@ -9,12 +11,20 @@ const FilterDate = (props) => {
         setDateToFilter(date);
     }
     return (
-        <DatePicker
-            selected={dateToFilter}
-            onChange={handleDateChange} 
-        />
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DatePicker 
+            label="Date"
+            value={dateToFilter}
+            onChange={handleDateChange}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} />}
+            />
+        </LocalizationProvider>
+       
     );
 };
 
 
 export default FilterDate;
+
+

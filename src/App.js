@@ -17,7 +17,7 @@ function App() {
   const [success, setSuccess] = useState(0);
   const [done, setDone] = useState(0);
 
-  const [dateToFilter, setDateToFilter] = useState(0);
+  const [dateToFilter, setDateToFilter] = useState(null);
   const [filterBySuccess, setFilterBySuccess] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
 
